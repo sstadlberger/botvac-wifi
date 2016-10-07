@@ -73,5 +73,6 @@ Send help to the bot to see an overview of all commands or send help commandname
 * The websocket responses contain only ASCII characters. All special characters get replaced by a underscore. This is only relevant for the text of non-english error messages. The error code is transmitted unchanged. This a limitation of the microcontroller/IDE.
 * Responses that are to big to fit into a single TCP packet are split up into multiple websocket messages. Always check for the response for the end of file marker (ctrl-z; \x1A). This a workaround for a possible bug in the network APIs (see also https://github.com/Links2004/arduinoWebSockets/issues/85).
 
-The (sadly) necessary disclaimer:
+**The (sadly) necessary disclaimer:**
+
 THE SOFTWARE AND INFORMATION IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE, INFORMATION OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
