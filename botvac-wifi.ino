@@ -3,6 +3,7 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 #include <WiFiClient.h>
+#include <ArduinoOTA.h>
 #include <WebSocketsServer.h>
 #include <Hash.h>
 
@@ -113,6 +114,11 @@ void setup() {
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
   }
+
+  ArduinoOTA.setHostname("neato");
+  ArduinoOTA.setPassword("neato");
+  ArduinoOTA.begin();
+
   // start websocket
   webSocket.begin();
   webSocket.onEvent(webSocketEvent);
@@ -135,6 +141,7 @@ void setup() {
 }
 
 void loop() {
+  ArduinoOTA.handle();
   webSocket.loop();
   server.handleClient();
   serialEvent();
