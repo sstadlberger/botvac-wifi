@@ -55,7 +55,7 @@ Install all software according to the documentation. Depending on what module/pr
 If you haven't already, check out this repository and open the botvac-wifi.ino file in the Arduino IDE. Replace the XXX with your WiFi SSID and password. Connect the ESP module to the computer and click the right-facing arrow to compile and upload the software to the ESP module.
 
 ## Usage
-The software includes multicast DNS (mDNS), so you should be able to connect to the bot with http://botvac.local for a simple websocket interface or use ws://botvac.local:81 for a direct websocket connection. Alternatively you can check your DHCP to find out the IP adress of the bot.
+Check your DHCP to find out the IP adress of the bot. The webinterface is on port 80 (regular http), the websocket is on port 81.
 
 For convenience and safety purposes, "TestMode off" is always send to the bot if a user disconnects.
 
@@ -66,12 +66,11 @@ The websocket server is listening on port 81. Everything that you send via the w
 The software also includes a simple HTML interface for the websocket connection. Connect with a browser to the bot to see it. The websocket connection is automatically established in the background. Type a command and press enter to send the command. The results are automatically displayed. You can disconnect by typing /disconnect or clear the screen by typing /clear.
 
 ### Command Syntax
-Send help to the bot to see an overview of all commands or send help commandname to get help for a specific command. Neato also offers a programmers manual: https://www.neatorobotics.com/resources/programmersmanual_20140305.pdf
+Send help to the bot to see an overview of all commands or send help commandname to get help for a specific command. 
 
 ## Known Issues and Limitations
 * Only one user can be connected at the same time. If a new user connects, the old user is disconnected. This is intentional and by design to prevent issues with the bot and data corruption with multiple users.
 * The websocket responses contain only ASCII characters. All special characters get replaced by a underscore. This is only relevant for the text of non-english error messages. The error code is transmitted unchanged. This a limitation of the microcontroller/IDE.
-* Responses that are to big to fit into a single TCP packet are split up into multiple websocket messages. Always check for the response for the end of file marker (ctrl-z; \x1A). This a workaround for a possible bug in the network APIs (see also https://github.com/Links2004/arduinoWebSockets/issues/85).
 
 **The (sadly) necessary disclaimer:**
 
